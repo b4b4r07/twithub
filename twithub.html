@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>dotfiles - BABAROT project</title>
+  <meta charset='utf-8'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+  function get_github(user) {
+      var api = "https://api.github.com/users";
+      var JSON = $.ajax({
+          type: "GET",
+          url: api + "/" + user,
+          dataType: "json",
+          async: false
+      }).responseText;
+
+      return JSON;
+  }
+
+  function get_twitter(user) {
+      var api = "https://twitter.com/users/username_available?username=";
+      var JSON = $.ajax({
+          type: "GET",
+          url: api + user,
+          dataType: "json",
+          async: false
+      }).responseText;
+
+      return JSON;
+  }
+
+  //$(document).ready(function() {
+  //    $("input").click(function() {
+  function onClick() {
+          var user = document.forms.form.username.value;
+
+          var json_github = get_github(user);
+          var json_twitter = get_twitter(user);
+
+          var jg = $.parseJSON(json_github);
+          var jt = $.parseJSON(json_twitter);
+
+          var msg = "";
+          if (jg.id == undefined || jt.valid == true) {
+              document.getElementById("github").style.display="none";
+              document.getElementById("twitter").style.display="none";
+              if (jg.id == undefined) {
+                  msg = msg + "G";
+                  //document.github.src="images/github.png";
+                  document.getElementById("github").style.display="block";
+              }
+              if (jt.valid == true) {
+                  msg = msg + "T";
+                  //document.twitter.src="images/twitter.png";
+                  document.getElementById("twitter").style.display="block";
+              }
+          } else {
+              msg = "unavailable";
+              //document.github.src="";
+              //document.twitter.src="";
+              document.getElementById("github").style.display="none";
+              document.getElementById("twitter").style.display="none";
+          }
+
+          //target = document.getElementById("output");
+          //target.innerText = msg;
+  }
+  //        });
+  //    });
+  </script>
+</head>
+
+<body>
+    <div class="st-container">
+        <!--
+        <form class="form-container" name="form" action="">
+            <div class="form-title"><h2>Check for existing</h2></div>
+            <input class="form-field" type="text" name="username" /><br />
+            <div class="submit-container">
+                <input class="submit-button" type="button" value="Check" onclick="onClick();" />
+            </div>
+        </form>
+        -->
+        <form action="" name="form" method="post">
+            <dl class="search1">
+                <dt><input type="text" name="username" value="" placeholder="Username you want to get" /></dt>
+                <dd><button type="button" onclick="onClick();"><span>TwitHub</span></button></dd>
+
+            </dl>
+        </form>
+
+        <div id="output">
+            <ul>
+                <li><img src="images/github.png"  id="github"  alt=""></li>
+                <li></li>
+                <li><img src="images/twitter.png" id="twitter" alt=""></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
