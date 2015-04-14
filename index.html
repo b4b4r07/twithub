@@ -48,24 +48,20 @@
               document.getElementById("twitter").style.display="none";
               if (jg.id == undefined) {
                   msg = msg + "G";
-                  //document.github.src="images/github.png";
                   document.getElementById("github").style.display="block";
               }
               if (jt.valid == true) {
                   msg = msg + "T";
-                  //document.twitter.src="images/twitter.png";
                   document.getElementById("twitter").style.display="block";
               }
           } else {
               msg = "unavailable";
-              //document.github.src="";
-              //document.twitter.src="";
               document.getElementById("github").style.display="none";
               document.getElementById("twitter").style.display="none";
           }
 
-          //target = document.getElementById("output");
-          //target.innerText = msg;
+          target = document.getElementById("output");
+          target.innerText = msg;
   }
   //        });
   //    });
@@ -92,11 +88,13 @@
         </form>
 
         <div id="output">
+            <!--
             <ul>
                 <li><img src="images/github.png"  id="github"  alt=""></li>
                 <li></li>
                 <li><img src="images/twitter.png" id="twitter" alt=""></li>
             </ul>
+            -->
         </div>
     </div>
 </body>
