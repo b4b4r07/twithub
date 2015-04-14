@@ -3,7 +3,6 @@
 <head>
   <title>dotfiles - BABAROT project</title>
   <meta charset='utf-8'>
-  <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script>
@@ -60,8 +59,8 @@
               document.getElementById("twitter").style.display="none";
           }
 
-          target = document.getElementById("output");
-          target.innerText = msg;
+          //target = document.getElementById("output");
+          //target.innerText = msg;
   }
   //        });
   //    });
@@ -83,19 +82,15 @@
             <dl class="search1">
                 <dt><input type="text" name="username" value="" placeholder="Username you want to get" /></dt>
                 <dd><button type="button" onclick="onClick();"><span>TwitHub</span></button></dd>
-
             </dl>
-                <input class="submit-button" type="button" value="Check" onclick="onClick();" />
         </form>
 
         <div id="output">
-            <!--
             <ul>
                 <li><img src="images/github.png"  id="github"  alt=""></li>
                 <li></li>
                 <li><img src="images/twitter.png" id="twitter" alt=""></li>
             </ul>
-            -->
         </div>
     </div>
 </body>
